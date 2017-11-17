@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/dataSources.local.xml
+.idea/workspace.xml
+src/test/com/shuaichen/crm/department/dao/
+src/test/com/shuaichen/crm/login/
+target/
