@@ -1,0 +1,20 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.shuaichen.crm.department.domain">
+    <class name="com.shuaichen.crm.post.domain.Post" table="T_POST">
+        <id name="postId" column="POST_ID">
+            <generator class="uuid"/>
+        </id>
+        <property name="postName"/>
+        <many-to-one name="department"
+                     class="com.shuaichen.crm.department.domain.Department"
+                     column="DEPT_ID"
+                     lazy="false"/>
+        <set name="staffSet"
+             table="T_STAFF">
+            <key column="POST_ID"/>
+            <one-to-many class="com.shuaichen.crm.staff.domain.Staff"/>
+        </set>
+    </class>
+</hibernate-mapping>

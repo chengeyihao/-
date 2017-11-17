@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true"/>
+    <include file="struts/dept-struts.xml"/>
+    <include file="struts/post-struts.xml"/>
+    <include file="struts/staff-struts.xml"/>
+
+    <package name="interceptor" extends="json-default">
+        <interceptors>
+            <interceptor name="loginInterceptor"
+                         class="com.shuaichen.crm.login.interceptor.LoginInterceptor"/>
+            <interceptor-stack name="myInterceptorStack">
+                <interceptor-ref name="loginInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+    </package>
+
+    <package name="login" extends="interceptor" namespace="/login">
+        <default-class-ref class="loginAction"/>
+        <!--登录查询-->
+        <action name="find"
+                method="find">
+            <result name="success">/pages/frame.jsp</result>
+            <result name="input">/pages/login.jsp</result>
+        </action>
+        <!--一键登录-->
+        <action name="frame">
+            <interceptor-ref name="myInterceptorStack"/>
+            <result name="success">/pages/frame.jsp</result>
+            <result name="login">/pages/login.jsp</result>
+        </action>
+        <!--退出登录-->
+        <action name="loginExit" method="loginExit">
+            <result name="success">/pages/login.jsp</result>
+        </action>
+    </package>
+
+</struts>

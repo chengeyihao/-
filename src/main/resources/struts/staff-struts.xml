@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <package name="staff" extends="json-default" namespace="/staff">
+        <default-class-ref class="staffAction"/>
+        <!--查询所有职工-->
+        <action name="findAll" method="findAll">
+            <result name="success" type="chain">findDept</result>
+        </action>
+
+        <!--查询部门-->
+        <action name="findDept" method="findDept">
+            <result name="success">/pages/staff/listStaff.jsp</result>
+        </action>
+
+        <!--根据部门id查询职位-->
+        <action name="findPostByDepId" method="findPostByDepId">
+            <result name="success" type="json">
+                <param name="root">postByDepId</param>
+                <param name="includeProperties">\[\d\]\.postId,\[\d\]\.postName</param>
+            </result>
+        </action>
+
+        <!--高级查询json解析-->
+        <action name="findSome" method="findSome">
+            <result type="json" name="success">
+                <param name="root">something</param>
+                <param name="excludeProperties">
+                    \[\d\]\.post\.department\.postSet,
+                    \[\d\]\.post\.staffSet
+                </param>
+            </result>
+        </action>
+
+        <!--添加时查询部门-->
+        <action name="addFindDept" method="findDept">
+            <result name="success">/pages/staff/addStaff.jsp</result>
+        </action>
+
+        <!--添加或修改-->
+        <action name="add" method="add">
+            <result name="success" type="chain">findAll</result>
+            <result name="input">/pages/staff/addStaff.jsp</result>
+        </action>
+
+        <!--根据员工Id查询对应员工-->
+        <action name="findByStaffId" method="findByStaffId">
+            <result name="success" type="chain">updateFindDept</result>
+        </action>
+
+        <!--修改时查询部门-->
+        <action name="updateFindDept" method="findDept">
+            <result name="success">/pages/staff/editStaff.jsp</result>
+        </action>
+        <!--修改密码-->
+        <action name="updateLoginPwd123" method="updateLoginPwd">
+            <result name="success" type="redirect">/index.jsp</result>
+            <result name="error">/pages/staff/updPwd.jsp</result>
+            <result name="input">/pages/staff/updPwd.jsp</result>
+        </action>
+        <!--跳转修改密码界面-->
+        <action name="pass">
+            <result name="success">/pages/staff/updPwd.jsp</result>
+        </action>
+
+
+
+    </package>
+</struts>

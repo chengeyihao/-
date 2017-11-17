@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="dept" extends="json-default" namespace="/dept">
+        <default-class-ref class="deptAction"/>
+        <!--部门查询-->
+        <action name="find"  method="find">
+            <result name="success">/pages/department/listDepartment.jsp</result>
+        </action>
+        <!--部门添加或修改-->
+        <action name="add" method="add">
+            <result name="success" type="chain">find</result>
+        </action>
+        <!--根据部门Id查询对应部门-->
+        <action name="findByDeptId" method="findByDeptId">
+            <result name="success">/pages/department/addOrEditDepartment.jsp</result>
+        </action>
+        <!--添加部门跳转-->
+        <action name="pass">
+            <result name="success">/pages/department/addOrEditDepartment.jsp</result>
+        </action>
+    </package>
+</struts>
