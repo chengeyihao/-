@@ -151,6 +151,9 @@ public class StaffServiceImpl implements StaffService {
      */
     @Override
     public void add(Staff staff) {
+        if(staff.getPost() == null){
+            staff.setPost(null);
+        }
         staffDao.add(staff);
     }
 

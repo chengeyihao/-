@@ -31,7 +31,7 @@
 				for (var i = 0; i < length; i++){
 					serverSelect.removeChild(optionEle[0]);
 				}
-				serverSelect.innerHTML = "<option value=''>--请选择职务--</option>";
+				serverSelect.innerHTML = "<option>--请选择职务--</option>";
 				// 将json数据插入到option中
 				for (var j = 0; j < json.length; j++) {
 					// 创建一个option标签
@@ -48,7 +48,7 @@
 			}
 		});
 
-		xhr.open("POST", "http://localhost:8080/staff/findPostByDepId");
+		xhr.open("POST", "/staff/findPostByDepId");
 		xhr.send(data);
 	}
 </script>
@@ -100,7 +100,7 @@
 	    <td width="10%">所属部门：</td>
 	    <td width="20%">
 			<select name="post.department.depId" onchange="onPostSelected(value)" id="department">
-				<option >--请选择部门--</option>
+				<option>--请选择部门--</option>
 				<s:iterator value="#StaffDept" var="dep">
 					<option value="${dep.depId}">${dep.depName}</option>
 				</s:iterator>
@@ -110,7 +110,7 @@
 	    <td width="8%">职务：</td>
 	    <td width="62%">
 			<select name="post.postId" id="posts">
-				<option >--请选择职务--</option>
+				<option>--请选择职务--</option>
 			</select>
 	    </td>
 	  </tr>

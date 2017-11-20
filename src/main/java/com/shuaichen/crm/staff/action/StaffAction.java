@@ -121,57 +121,28 @@ public class StaffAction extends BaseAction<Staff,StaffService>{
 
 
 
-//    /**
-//     * 添加或修改的验证
-//     */
-//    public String validateAdd(){
+    /**
+     * 添加或修改的验证
+     */
+//    public void validateAdd(){
 //        if (getModel().getPost().getDepartment().getDepId().length() == 0){
-//            if (getModel().getStaffId()==null){
-//                addFieldError("depId","部门名字不能为空");
-//                return "input1";
-//            }else {
-//                addFieldError("depId","部门名字不能为空");
-//                return "input2";
-//            }
+//            addFieldError("depId","部门名字不能为空");
 //        }
 //        if (getModel().getPost().getPostId().length() == 0){
-//            if (getModel().getStaffId()==null){
-//                addFieldError("depId","职务名字不能为空");
-//                return "input1";
-//            }else {
-//                addFieldError("depId","职务名字不能为空");
-//                return "input2";
-//            }
+//            addFieldError("depId","职务名字不能为空");
 //        }
 //        if (getModel().getLoginName().length() == 0){
-//            if (getModel().getStaffId()==null){
-//                addFieldError("depId","登录名字不能为空");
-//                return "input1";
-//            }else {
-//                addFieldError("depId","登录名字不能为空");
-//                return "input2";
-//            }
+//            addFieldError("depId","登录名字不能为空");
 //        }
 //        if (getModel().getLoginPwd().length() == 0){
-//            if (getModel().getStaffId()==null){
-//                addFieldError("depId","登录密码不能为空");
-//                return "input1";
-//            }else {
-//                addFieldError("depId","登录密码不能为空");
-//                return "input2";
-//            }
+//            addFieldError("depId","登录密码不能为空");
 //        }
 //        if (getModel().getStaffName().length() == 0){
-//            if (getModel().getStaffId()==null){
-//                addFieldError("depId","职工名字不能为空");
-//                return "input1";
-//            }else {
-//                addFieldError("depId","职工名字不能为空");
-//                return "input2";
-//            }
+//            addFieldError("depId","职工名字不能为空");
 //        }
-//        return SUCCESS;
+//
 //    }
+
 
     public int getPageNum() {
         return pageNum;

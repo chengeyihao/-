@@ -50,7 +50,7 @@
 				}
 			});
 
-			xhr.open("POST", "http://localhost:8080/staff/findPostByDepId");
+			xhr.open("POST", "/staff/findPostByDepId");
 			xhr.send(data);
 		}
 
@@ -111,7 +111,7 @@
 				}
 			});
 
-			xhr.open("POST", "http://localhost:8080/staff/findSome");
+			xhr.open("POST", "/staff/findSome");
 			xhr.send(data);
 		}
 	</script>
