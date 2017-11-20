@@ -1,13 +1,13 @@
 package com.shuaichen.crm.staff.domain;
 
 import com.shuaichen.crm.post.domain.Post;
+import com.sun.istack.internal.NotNull;
 
 
 /**
  * Created by dllo on 17/11/9.
  */
 public class Staff {
-
     private String staffId;
     private String loginName;
     private String loginPwd;

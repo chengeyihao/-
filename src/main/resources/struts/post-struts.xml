@@ -6,25 +6,29 @@
 
 <struts>
     
-    <package name="post" extends="json-default" namespace="/post">
+    <package name="post" extends="interceptor" namespace="/post">
         <default-class-ref class="postAction"/>
         <!--查询所有职位-->
         <action name="findAll" method="findAll">
             <result name="success">/pages/post/listPost.jsp</result>
+            <result name="login">/pages/login.jsp</result>
         </action>
 
         <!--添加跳转+查询所有部门-->
         <action name="pass" method="findDept">
             <result name="success">/pages/post/addOrEditPost.jsp</result>
+            <result name="login">/pages/login.jsp</result>
         </action>
 
         <!--根据postId查询职位-->
         <action name="findByPostId" method="findByPostId">
             <result name="success" type="chain">pass</result>
+            <result name="login">/pages/login.jsp</result>
         </action>
         <!--添加或修改-->
         <action name="add" method="add">
             <result name="success" type="chain">findAll</result>
+            <result name="login">/pages/login.jsp</result>
         </action>
     </package>
     

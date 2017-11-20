@@ -14,12 +14,15 @@
     <package name="interceptor" extends="json-default">
         <interceptors>
             <interceptor name="loginInterceptor"
-                         class="com.shuaichen.crm.login.interceptor.LoginInterceptor"/>
+                         class="com.shuaichen.crm.login.interceptor.LoginInterceptor">
+                <param name="excludeMethods">find</param>
+            </interceptor>
             <interceptor-stack name="myInterceptorStack">
                 <interceptor-ref name="loginInterceptor"/>
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
         </interceptors>
+        <default-interceptor-ref name="myInterceptorStack"/>
     </package>
 
     <package name="login" extends="interceptor" namespace="/login">
@@ -32,13 +35,14 @@
         </action>
         <!--一键登录-->
         <action name="frame">
-            <interceptor-ref name="myInterceptorStack"/>
+            <!--<interceptor-ref name="myInterceptorStack"/>-->
             <result name="success">/pages/frame.jsp</result>
             <result name="login">/pages/login.jsp</result>
         </action>
         <!--退出登录-->
         <action name="loginExit" method="loginExit">
             <result name="success">/pages/login.jsp</result>
+            <result name="login">/pages/login.jsp</result>
         </action>
     </package>
 

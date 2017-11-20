@@ -80,16 +80,17 @@
 </table>
 
 <form action="/staff/add.action" method="post">
+
 	<table width="88%" border="0" class="emp_table" style="width:80%;">
 	 <tr>
 	    <td>登录名：</td>
-	    <td><input type="text" name="loginName" value=""/> </td>
+	    <td><input type="text" name="loginName" /> </td>
 	    <td>密码：</td>
-	    <td><input type="password" name="loginPwd" value=""/> </td>
+	    <td><input type="password" name="loginPwd" /> </td>
 	  </tr>
 	 <tr>
 	    <td>姓名：</td>
-	    <td><input type="text" name="staffName" value="" id="staffAction_add_staffName"/> </td>
+	    <td><input type="text" name="staffName"  id="staffAction_add_staffName"/> </td>
 	    <td>性别：</td>
 	    <td><input type="radio" name="gender"  value="男" checked="checked"/>男
 	    	<input type="radio" name="gender"  value="女"/>女
@@ -99,7 +100,7 @@
 	    <td width="10%">所属部门：</td>
 	    <td width="20%">
 			<select name="post.department.depId" onchange="onPostSelected(value)" id="department">
-				<option value="">--请选择部门--</option>
+				<option >--请选择部门--</option>
 				<s:iterator value="#StaffDept" var="dep">
 					<option value="${dep.depId}">${dep.depName}</option>
 				</s:iterator>
@@ -109,14 +110,14 @@
 	    <td width="8%">职务：</td>
 	    <td width="62%">
 			<select name="post.postId" id="posts">
-				<option value="">--请选择职务--</option>
+				<option >--请选择职务--</option>
 			</select>
 	    </td>
 	  </tr>
 	   <tr>
 	    <td width="10%">入职时间：</td>
 	    <td width="20%">
-	    	<input type="text" name="onDutyDate" value="" />
+	    	<input type="text" name="onDutyDate" />
 	    </td>
 	    <td width="8%"></td>
 	    <td width="62%"></td>

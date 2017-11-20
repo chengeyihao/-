@@ -6,16 +6,18 @@
 
 <struts>
 
-    <package name="staff" extends="json-default" namespace="/staff">
+    <package name="staff" extends="interceptor" namespace="/staff">
         <default-class-ref class="staffAction"/>
         <!--查询所有职工-->
         <action name="findAll" method="findAll">
             <result name="success" type="chain">findDept</result>
+            <result name="login">/pages/login.jsp</result>
         </action>
 
         <!--查询部门-->
         <action name="findDept" method="findDept">
             <result name="success">/pages/staff/listStaff.jsp</result>
+            <result name="login">/pages/login.jsp</result>
         </action>
 
         <!--根据部门id查询职位-->
@@ -40,32 +42,39 @@
         <!--添加时查询部门-->
         <action name="addFindDept" method="findDept">
             <result name="success">/pages/staff/addStaff.jsp</result>
+            <result name="login">/pages/login.jsp</result>
         </action>
 
         <!--添加或修改-->
         <action name="add" method="add">
             <result name="success" type="chain">findAll</result>
-            <result name="input">/pages/staff/addStaff.jsp</result>
+            <result name="input1" type="chain">findDept</result>
+            <result name="input2" type="chain">updateFindDept</result>
+            <result name="login">/pages/login.jsp</result>
         </action>
 
         <!--根据员工Id查询对应员工-->
         <action name="findByStaffId" method="findByStaffId">
             <result name="success" type="chain">updateFindDept</result>
+            <result name="login">/pages/login.jsp</result>
         </action>
 
         <!--修改时查询部门-->
         <action name="updateFindDept" method="findDept">
             <result name="success">/pages/staff/editStaff.jsp</result>
+            <result name="login">/pages/login.jsp</result>
         </action>
         <!--修改密码-->
         <action name="updateLoginPwd123" method="updateLoginPwd">
             <result name="success" type="redirect">/index.jsp</result>
             <result name="error">/pages/staff/updPwd.jsp</result>
             <result name="input">/pages/staff/updPwd.jsp</result>
+            <result name="login">/pages/login.jsp</result>
         </action>
         <!--跳转修改密码界面-->
         <action name="pass">
             <result name="success">/pages/staff/updPwd.jsp</result>
+            <result name="login">/pages/login.jsp</result>
         </action>
 
 
